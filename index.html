@@ -99,15 +99,15 @@
   <h1>OMR Grader</h1>
   <p>โปรแกรมตรวจกระดาษคำตอบอัตโนมัติ · แม่นยำ · ใช้ง่าย · ฟรี</p>
   <div class="btns">
-    <a class="btn btn-main" href="https://github.com/sihanart/OMR-GRADER-release/releases/latest/download/OMR_Grader.exe">
-      ⬇ ดาวน์โหลดโปรแกรม (Windows)
+    <a class="btn btn-main" href="https://github.com/sihanart/OMR-GRADER-release/releases/latest/download/OMR_Grader_Setup.exe">
+      ⬇ ดาวน์โหลดตัวติดตั้ง (Windows)
     </a>
     <a class="btn btn-ghost" href="OMR_Grader_Manual.pdf">
       📄 โหลดคู่มือ (PDF)
     </a>
   </div>
-  <p class="subnote">ไฟล์เดียว ดับเบิลคลิกใช้ได้เลย — ไม่ต้องติดตั้ง Python · รองรับ PDF จากเครื่องสแกน ADF ·
-    รองรับฟอร์ม R2202A (60 ข้อ) และ R1102 (120 ข้อ)</p>
+  <p class="subnote">ดับเบิลคลิกติดตั้งได้เลย ไม่ต้องขอสิทธิ์ admin — ไม่ต้องติดตั้ง Python ·
+    รองรับ PDF จากเครื่องสแกน ADF · รองรับฟอร์ม R2202A (60 ข้อ) และ R1102 (120 ข้อ)</p>
 </header>
 
 <main class="wrap">
@@ -132,9 +132,11 @@
 
   <section style="padding-top:0">
     <div class="callout">
-      <b>⚠ ครั้งแรกที่เปิด Windows อาจเตือน</b> “Windows protected your PC”
+      <b>⚠ ตอนเปิดตัวติดตั้ง Windows อาจเตือน</b> “Windows protected your PC”
       เพราะไฟล์ยังไม่ได้เซ็น certificate → กด <b>More info</b> แล้วกด
       <b>Run anyway</b> ครั้งเดียว ครั้งต่อไปจะไม่ถามอีก (โปรแกรมปลอดภัย)
+      <br><b>ติดตั้งไม่ต้องใช้สิทธิ์ admin</b> — ลงในโฟลเดอร์ของผู้ใช้เอง
+      และติดตั้งทับตัวเดิมได้เลยโดยไม่ต้องถอนก่อน
     </div>
   </section>
 
@@ -172,7 +174,10 @@
     <details><summary>ต้องต่อเน็ตไหม?</summary>
       <p>ตรวจข้อสอบใช้แบบออฟไลน์ได้ ต่อเน็ตเฉพาะตอนกด “ตรวจอัปเดต” เท่านั้น</p></details>
     <details><summary>ใช้กับ Mac / มือถือได้ไหม?</summary>
-      <p>เวอร์ชันนี้สำหรับ Windows โดยดับเบิลคลิกไฟล์ .exe</p></details>
+      <p>เวอร์ชันนี้สำหรับ Windows เท่านั้น ติดตั้งด้วยไฟล์ <b>OMR_Grader_Setup.exe</b></p></details>
+    <details><summary>อัปเดตเวอร์ชันใหม่ต้องทำยังไง?</summary>
+      <p>ไม่ต้องทำอะไร โปรแกรมจะเช็คให้เองทุกครั้งที่เปิด ถ้ามีเวอร์ชันใหม่จะเด้งบอก
+      กด “ตกลง” แล้วมันจะดาวน์โหลดและติดตั้งให้เอง แล้วเปิดกลับมาให้</p></details>
   </section>
 
 </main>
