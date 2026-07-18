@@ -55,6 +55,22 @@
     border-radius:12px; padding:18px 20px; margin-top:8px}
   .callout b{color:var(--amber)}
 
+  /* Pricing */
+  .plans{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px}
+  .plan{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:24px 20px; display:flex; flex-direction:column; position:relative}
+  .plan.best{border:2px solid var(--green); box-shadow:0 10px 26px rgba(26,158,90,.16)}
+  .tag{position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+    background:var(--green); color:#fff; font-size:.78rem; font-weight:700;
+    padding:4px 14px; border-radius:999px; white-space:nowrap}
+  .plan h3{font-size:1.1rem; margin-bottom:10px}
+  .price{font-size:2.1rem; font-weight:800; color:var(--green-dk); line-height:1.2}
+  .price small{font-size:.95rem; font-weight:600; color:var(--muted)}
+  .was{color:var(--muted); text-decoration:line-through; font-size:1rem; margin-bottom:2px}
+  .plan ul{list-style:none; margin-top:14px; font-size:.94rem; color:var(--muted)}
+  .plan li{padding:4px 0 4px 22px; position:relative}
+  .plan li::before{content:"✓"; position:absolute; left:0; color:var(--green); font-weight:700}
+
   .features{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
   .feat{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px}
   .feat .ic{font-size:1.5rem}
@@ -109,7 +125,9 @@
   <p class="subnote">ดับเบิลคลิกติดตั้งได้เลย ไม่ต้องขอสิทธิ์ admin — ไม่ต้องติดตั้ง Python ·
     รองรับ PDF จากเครื่องสแกน ADF · รองรับฟอร์ม R2202A (60 ข้อ) และ R1102 (120 ข้อ)</p>
   <p class="subnote" style="opacity:.85">ทดลองใช้ได้ทันทีโดยไม่ต้องลงทะเบียน —
-    ตรวจฟรี 100 ใบ ไม่มีวันหมดอายุ</p>
+    ตรวจฟรี 100 ใบ ไม่มีวันหมดอายุ · ใช้ต่อไม่จำกัด
+    <a href="#price" style="color:#fff;text-decoration:underline">เริ่มต้น 1,900 บาท</a>
+    ซื้อครั้งเดียวใช้ตลอด</p>
 </header>
 
 <main class="wrap">
@@ -191,8 +209,49 @@
       ตามช่องทางด้านล่าง</p></details>
   </section>
 
-  <section id="license">
-    <h2>ซื้อ License — ใช้ได้ไม่จำกัด</h2>
+  <section id="price">
+    <h2>ราคา</h2>
+    <p class="lead">ซื้อครั้งเดียว ใช้ได้ตลอด ไม่มีค่ารายปี</p>
+    <div class="plans">
+      <div class="plan best">
+        <div class="tag">ราคาเปิดตัว · 20 โรงเรียนแรก</div>
+        <h3>1 เครื่อง</h3>
+        <div class="was">ปกติ 2,500 บาท</div>
+        <div class="price">1,900 <small>บาท</small></div>
+        <ul>
+          <li>ตรวจไม่จำกัดจำนวนใบ</li>
+          <li>ใช้ได้ตลอดชีพ ไม่มีค่ารายปี</li>
+          <li>เปลี่ยนเครื่องออกให้ใหม่ฟรี</li>
+          <li>อัปเดตเวอร์ชัน 1.x ฟรี</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>3 เครื่อง</h3>
+        <div class="price">5,900 <small>บาท</small></div>
+        <ul>
+          <li>สำหรับโรงเรียนที่มีหลายจุดตรวจ</li>
+          <li>เงื่อนไขเหมือนแบบ 1 เครื่องทุกข้อ</li>
+          <li>ถูกกว่าซื้อแยก 3 ชุด</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>ทั้งโรงเรียน</h3>
+        <div class="price">9,900 <small>บาท</small></div>
+        <ul>
+          <li>ติดตั้งได้ทุกเครื่องในโรงเรียน</li>
+          <li><b>ไม่ผูกเครื่อง</b> — เปลี่ยนคอมได้เอง</li>
+          <li>ไม่ต้องแจ้งขอไฟล์ใหม่ทุกครั้ง</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:22px">
+      <b>🧾 ยินดีออกใบเสนอราคา</b> สำหรับเบิกงบประมาณโรงเรียน
+      แจ้งชื่อโรงเรียนและแบบที่ต้องการมาได้เลย · ราคานี้ยังไม่รวมภาษีมูลค่าเพิ่ม
+    </div>
+  </section>
+
+  <section id="license" style="padding-top:0">
+    <h2>ได้อะไรบ้างเมื่อซื้อ</h2>
     <p class="lead">ซื้อครั้งเดียว ใช้ได้ตลอด ไม่มีค่ารายปี</p>
     <div class="steps">
       <div class="step">
@@ -241,14 +300,14 @@
       </div>
     </div>
     <div class="callout" style="margin-top:22px">
-      <b>💬 สอบถามราคาและใบเสนอราคา</b> ติดต่อได้ตามช่องทางด้านล่าง
-      ยินดีออกใบเสนอราคาสำหรับเบิกงบประมาณโรงเรียน
+      <b>💬 ยังไม่แน่ใจ?</b> ทดลองฟรี 100 ใบได้เลยโดยไม่ต้องติดต่อใคร
+      ลองกับข้อสอบจริงจนมั่นใจแล้วค่อยตัดสินใจซื้อ
     </div>
   </section>
 
   <section id="contact" style="padding-top:0">
     <h2>ติดต่อเรา</h2>
-    <p class="lead">สอบถามราคา ขอ license หรือสอบถามการใช้งาน</p>
+    <p class="lead">สั่งซื้อ ขอใบเสนอราคา หรือสอบถามการใช้งาน</p>
     <div class="steps">
       <div class="step">
         <h3>📞 โทรศัพท์</h3>
