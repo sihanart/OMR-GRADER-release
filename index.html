@@ -55,6 +55,16 @@
     border-radius:12px; padding:18px 20px; margin-top:8px}
   .callout b{color:var(--amber)}
 
+  /* Speed table */
+  .speed{width:100%; border-collapse:collapse; margin-top:6px; background:var(--card);
+    border:1px solid var(--line); border-radius:16px; overflow:hidden}
+  .speed th,.speed td{padding:14px 18px; text-align:left; border-bottom:1px solid var(--line)}
+  .speed tr:last-child td{border-bottom:none}
+  .speed th{font-size:.95rem; color:var(--muted); font-weight:600; background:#fbfdfc}
+  .speed td:last-child{text-align:right; font-weight:700; color:var(--green); font-size:1.15rem}
+  .speed tr.big td:last-child{font-size:1.3rem}
+  .fineprint{color:var(--muted); font-size:.88rem; margin-top:12px; line-height:1.7}
+
   /* Pricing */
   .plans{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px}
   .plan{background:var(--card); border:1px solid var(--line); border-radius:16px;
@@ -161,6 +171,27 @@
       <br><b>ติดตั้งไม่ต้องใช้สิทธิ์ admin</b> — ลงในโฟลเดอร์ของผู้ใช้เอง
       และติดตั้งทับตัวเดิมได้เลยโดยไม่ต้องถอนก่อน
     </div>
+  </section>
+
+  <section>
+    <h2>ตรวจเร็วแค่ไหน</h2>
+    <p class="lead">จับเวลาจริงจากไฟล์สแกนของโรงเรียน ไม่ใช่ตัวเลขประมาณ</p>
+    <table class="speed">
+      <tr><th>จำนวนกระดาษ</th><th style="text-align:right">เวลาที่ใช้</th></tr>
+      <tr><td>10 ใบ</td><td>ไม่ถึงครึ่งนาที</td></tr>
+      <tr><td><b>40 ใบ</b> — หนึ่งห้องเรียน</td><td>ไม่ถึง 1 นาที</td></tr>
+      <tr><td>60 ใบ</td><td>ประมาณ 2 นาที</td></tr>
+      <tr><td>100 ใบ</td><td>ประมาณ 3 นาที</td></tr>
+      <tr><td>120 ใบ</td><td>ประมาณ 3 นาที</td></tr>
+      <tr class="big"><td><b>200 ใบ</b> — ทั้งระดับชั้น</td><td>ประมาณ 5 นาที</td></tr>
+    </table>
+    <p class="fineprint">
+      วัดจากไฟล์ PDF ที่สแกน A4 ด้วยเครื่องสแกนจริง <b>รวมเวลานำเข้าไฟล์แล้ว</b>
+      · ใส่ไฟล์ทั้งปึกครั้งเดียว ไม่ต้องเฝ้าหน้าจอ กดหยุดกลางคันแล้วตรวจต่อได้
+      <br>เวลาจริงขึ้นกับเครื่องและความละเอียดที่สแกนมา — <b>เครื่องที่ช้ากว่าจะใช้เวลามากกว่านี้</b>
+      แต่โปรแกรมไม่ได้พึ่งเครื่องแรง ทดสอบบีบให้ใช้ซีพียูแกนเดียวแล้วช้าลงเพียง 21%
+      <br>ยังไม่รวมเวลาสแกนกระดาษที่ตัวเครื่องสแกน ซึ่งปกติใช้เวลานานกว่าที่โปรแกรมตรวจ
+    </p>
   </section>
 
   <section>
