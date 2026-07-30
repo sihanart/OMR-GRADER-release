@@ -476,8 +476,24 @@
   </style>
   <section id="pay" style="padding-top:0">
     <h2>แจ้งชำระเงิน / ส่งสลิป</h2>
-    <p class="lead">โอนแล้ว → <b>คัดลอกรหัสเครื่อง</b>จากโปรแกรม (เมนู เพิ่มเติม → License)
-      → กรอกฟอร์ม+แนบสลิป → รับ License ทางอีเมล</p>
+    <p class="lead">1) สแกน QR โอน (ยอดใส่ให้แล้ว) · 2) คัดลอก<b>รหัสเครื่อง</b>จากโปรแกรม
+      (เมนู เพิ่มเติม → License) · 3) กรอกฟอร์มด้านล่าง + แนบสลิป → รับ License ทางอีเมล</p>
+    <style>
+      .qrrow{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:6px auto 22px}
+      .qrcard{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;
+        text-align:center;width:190px}
+      .qrcard img{width:100%;height:auto;border-radius:8px;display:block}
+      .qrcard .p{margin-top:6px;font-size:.95rem;color:var(--ink)}
+      .qrcard .p b{color:var(--green-dk);font-size:1.05rem}
+    </style>
+    <div class="qrrow">
+      <div class="qrcard"><img src="qr-1900.png" alt="พร้อมเพย์ 1,900 บาท (1 เครื่อง)" loading="lazy">
+        <div class="p">1 เครื่อง<br><b>1,900 บาท</b></div></div>
+      <div class="qrcard"><img src="qr-5900.png" alt="พร้อมเพย์ 5,900 บาท (3 เครื่อง)" loading="lazy">
+        <div class="p">3 เครื่อง<br><b>5,900 บาท</b></div></div>
+      <div class="qrcard"><img src="qr-9900.png" alt="พร้อมเพย์ 9,900 บาท (ทั้งโรงเรียน)" loading="lazy">
+        <div class="p">ทั้งโรงเรียน<br><b>9,900 บาท</b></div></div>
+    </div>
     <div id="paydone" style="display:none;max-width:560px;margin:10px auto 0;padding:16px;
          border:1px solid var(--green);background:#eafaf0;border-radius:10px;text-align:center;
          font-weight:700;color:var(--green-dk)">
