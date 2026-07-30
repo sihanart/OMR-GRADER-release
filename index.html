@@ -479,20 +479,26 @@
     <p class="lead">1) สแกน QR โอน (ยอดใส่ให้แล้ว) · 2) คัดลอก<b>รหัสเครื่อง</b>จากโปรแกรม
       (เมนู เพิ่มเติม → License) · 3) กรอกฟอร์มด้านล่าง + แนบสลิป → รับ License ทางอีเมล</p>
     <style>
-      .qrrow{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:6px auto 22px}
-      .qrcard{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;
-        text-align:center;width:190px}
+      .qrtabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0 12px}
+      .qrtab{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:20px;
+        padding:8px 16px;font:inherit;font-weight:600;cursor:pointer}
+      .qrtab.active{background:var(--green);color:#fff;border-color:var(--green)}
+      .qrcard{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;
+        text-align:center;width:210px;margin:0 auto 22px}
       .qrcard img{width:100%;height:auto;border-radius:8px;display:block}
-      .qrcard .p{margin-top:6px;font-size:.95rem;color:var(--ink)}
-      .qrcard .p b{color:var(--green-dk);font-size:1.05rem}
+      .qrcard .p{margin-top:8px;font-size:1rem;color:var(--ink)}
+      .qrcard .p b{color:var(--green-dk);font-size:1.1rem}
     </style>
-    <div class="qrrow">
-      <div class="qrcard"><img src="qr-1900.png" alt="พร้อมเพย์ 1,900 บาท (1 เครื่อง)" loading="lazy">
-        <div class="p">1 เครื่อง<br><b>1,900 บาท</b></div></div>
-      <div class="qrcard"><img src="qr-5900.png" alt="พร้อมเพย์ 5,900 บาท (3 เครื่อง)" loading="lazy">
-        <div class="p">3 เครื่อง<br><b>5,900 บาท</b></div></div>
-      <div class="qrcard"><img src="qr-9900.png" alt="พร้อมเพย์ 9,900 บาท (ทั้งโรงเรียน)" loading="lazy">
-        <div class="p">ทั้งโรงเรียน<br><b>9,900 บาท</b></div></div>
+    <div class="qrtabs">
+      <button type="button" class="qrtab active" data-i="0">1 เครื่อง · 1,900</button>
+      <button type="button" class="qrtab" data-i="1">3 เครื่อง · 5,900</button>
+      <button type="button" class="qrtab" data-i="2">ทั้งโรงเรียน · 9,900</button>
+    </div>
+    <div class="qrcard">
+      <img id="qr0" src="qr-1900.png" alt="พร้อมเพย์ 1,900 บาท (1 เครื่อง)" loading="lazy">
+      <img id="qr1" src="qr-5900.png" alt="พร้อมเพย์ 5,900 บาท (3 เครื่อง)" loading="lazy" style="display:none">
+      <img id="qr2" src="qr-9900.png" alt="พร้อมเพย์ 9,900 บาท (ทั้งโรงเรียน)" loading="lazy" style="display:none">
+      <div class="p" id="qrlabel">1 เครื่อง · <b>1,900 บาท</b></div>
     </div>
     <div id="paydone" style="display:none;max-width:560px;margin:10px auto 0;padding:16px;
          border:1px solid var(--green);background:#eafaf0;border-radius:10px;text-align:center;
@@ -539,6 +545,24 @@
         if(done) done.style.display='block';
         if(form) form.style.display='none';
       }
+      // เลือกแพ็กเกจ → โชว์ QR อันเดียวที่ตรง + ตั้งค่าแพ็กเกจในฟอร์มตาม
+      var labels=['1 เครื่อง · <b>1,900 บาท</b>','3 เครื่อง · <b>5,900 บาท</b>',
+                  'ทั้งโรงเรียน · <b>9,900 บาท</b>'];
+      var tabs=document.querySelectorAll('.qrtab');
+      tabs.forEach(function(t){
+        t.addEventListener('click',function(){
+          var i=+t.getAttribute('data-i');
+          tabs.forEach(function(x){x.classList.remove('active');});
+          t.classList.add('active');
+          for(var k=0;k<3;k++){
+            var im=document.getElementById('qr'+k);
+            if(im) im.style.display = (k===i)?'block':'none';
+          }
+          var lb=document.getElementById('qrlabel'); if(lb) lb.innerHTML=labels[i];
+          var sel=document.querySelector('#payform select[name="แพ็กเกจ"]');
+          if(sel) sel.selectedIndex=i;      // ให้ฟอร์มตรงกับ QR ที่เลือก
+        });
+      });
     })();
   </script>
 
