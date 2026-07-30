@@ -517,14 +517,10 @@
       <label>อีเมล (สำหรับส่ง License กลับ) *<input type="email" name="email" required></label>
       <label>เบอร์โทร / ไลน์<input type="text" name="โทร-ไลน์"></label>
       <label>โรงเรียน (ถ้ามี)<input type="text" name="โรงเรียน"></label>
-      <label>แพ็กเกจ
-        <select name="แพ็กเกจ">
-          <option>1 เครื่อง — 1,900</option>
-          <option>3 เครื่อง — 5,900</option>
-          <option>ทั้งโรงเรียน — 9,900</option>
-          <option>อื่นๆ / สอบถาม</option>
-        </select>
-      </label>
+      <label>แพ็กเกจ (เลือกจากปุ่มด้านบน — ล็อกให้ตรงกับ QR ที่โอน)
+        <input type="text" name="แพ็กเกจ" id="pkgfield" value="1 เครื่อง — 1,900"
+               readonly tabindex="-1"
+               style="background:#eef1ef;color:var(--muted);cursor:not-allowed"></label>
       <label>รหัสเครื่อง (คัดลอกจากโปรแกรม: เมนู เพิ่มเติม → License → คัดลอกรหัสเครื่อง)
         <input type="text" name="รหัสเครื่อง"
                placeholder="วางรหัสเครื่องที่คัดลอกมา — มีแล้วเราออก License กลับได้ทันที"></label>
@@ -559,8 +555,9 @@
             if(im) im.style.display = (k===i)?'block':'none';
           }
           var lb=document.getElementById('qrlabel'); if(lb) lb.innerHTML=labels[i];
-          var sel=document.querySelector('#payform select[name="แพ็กเกจ"]');
-          if(sel) sel.selectedIndex=i;      // ให้ฟอร์มตรงกับ QR ที่เลือก
+          var pkgs=['1 เครื่อง — 1,900','3 เครื่อง — 5,900','ทั้งโรงเรียน — 9,900'];
+          var pf=document.getElementById('pkgfield');
+          if(pf) pf.value=pkgs[i];          // ล็อกแพ็กเกจให้ตรงกับ QR ที่เลือก
         });
       });
     })();
