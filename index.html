@@ -460,6 +460,77 @@
     </div>
   </section>
 
+  <style>
+    .payform{max-width:560px;margin:10px auto 0;text-align:left;display:grid;gap:12px}
+    .payform label{font-weight:600;color:var(--ink);font-size:.95rem}
+    .payform input,.payform select,.payform textarea{width:100%;box-sizing:border-box;
+      margin-top:5px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;
+      font:inherit;background:#fff;color:var(--ink)}
+    .payform input:focus,.payform select:focus,.payform textarea:focus{outline:none;
+      border-color:var(--green)}
+    .payform button{background:var(--green);color:#fff;border:0;border-radius:8px;
+      padding:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:4px}
+    .payform button:disabled{opacity:.6;cursor:default}
+    #payresult{margin-top:4px;font-weight:600;min-height:1.2em}
+    #payresult.ok{color:var(--green-dk)} #payresult.err{color:#c1272d}
+  </style>
+  <section id="pay" style="padding-top:0">
+    <h2>แจ้งชำระเงิน / ส่งสลิป</h2>
+    <p class="lead">โอนแล้ว → <b>คัดลอกรหัสเครื่อง</b>จากโปรแกรม (เมนู เพิ่มเติม → License)
+      → กรอกฟอร์ม+แนบสลิป → รับ License ทางอีเมล</p>
+    <form id="payform" class="payform">
+      <input type="hidden" name="access_key" value="3c1f29dd-a999-4f79-be05-6baf0c02dbf6">
+      <input type="hidden" name="subject" value="แจ้งชำระเงิน OMR Grader (จากเว็บ)">
+      <input type="hidden" name="from_name" value="เว็บ OMR Grader">
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+      <label>ชื่อ–นามสกุล *<input type="text" name="ชื่อ-นามสกุล" required></label>
+      <label>อีเมล (สำหรับส่ง License กลับ) *<input type="email" name="email" required></label>
+      <label>เบอร์โทร / ไลน์<input type="text" name="โทร-ไลน์"></label>
+      <label>โรงเรียน (ถ้ามี)<input type="text" name="โรงเรียน"></label>
+      <label>แพ็กเกจ
+        <select name="แพ็กเกจ">
+          <option>1 เครื่อง — 1,900</option>
+          <option>3 เครื่อง — 5,900</option>
+          <option>ทั้งโรงเรียน — 9,900</option>
+          <option>อื่นๆ / สอบถาม</option>
+        </select>
+      </label>
+      <label>รหัสเครื่อง (คัดลอกจากโปรแกรม: เมนู เพิ่มเติม → License → คัดลอกรหัสเครื่อง)
+        <input type="text" name="รหัสเครื่อง"
+               placeholder="วางรหัสเครื่องที่คัดลอกมา — มีแล้วเราออก License กลับได้ทันที"></label>
+      <label>แนบสลิปการโอน * (รูปหรือ PDF)
+        <input type="file" name="attachment" accept="image/*,.pdf" required></label>
+      <label>ข้อความเพิ่มเติม<textarea name="ข้อความ" rows="3"></textarea></label>
+      <button type="submit">ส่งแจ้งชำระเงิน</button>
+      <div id="payresult"></div>
+    </form>
+    <p class="small" style="text-align:center;color:var(--muted);margin-top:10px">
+      ข้อมูลนี้เป็นของผู้ซื้อ (ไม่ใช่ข้อมูลนักเรียน) · หากส่งไม่สำเร็จ
+      ส่งสลิปมาที่ <a href="mailto:omrgrader.support@gmail.com">omrgrader.support@gmail.com</a> ได้เลย</p>
+  </section>
+  <script>
+    (function(){
+      var f=document.getElementById('payform');
+      f.addEventListener('submit',async function(e){
+        e.preventDefault();
+        var res=document.getElementById('payresult');
+        var btn=f.querySelector('button');
+        res.className='';res.textContent='กำลังส่ง…';btn.disabled=true;
+        try{
+          var r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(f)});
+          var j=await r.json();
+          if(j.success){res.className='ok';
+            res.textContent='✓ ได้รับข้อมูลแล้ว เราจะส่ง License ให้ทางอีเมลโดยเร็ว ขอบคุณครับ';
+            f.reset();}
+          else{res.className='err';
+            res.textContent='ส่งไม่สำเร็จ: '+(j.message||'ลองใหม่ หรือส่งสลิปทางอีเมล');}
+        }catch(err){res.className='err';
+          res.textContent='ส่งไม่สำเร็จ (เน็ตมีปัญหา?) — ส่งสลิปมาที่ omrgrader.support@gmail.com ได้เลย';}
+        finally{btn.disabled=false;}
+      });
+    })();
+  </script>
+
   <section id="contact" style="padding-top:0">
     <h2>ติดต่อเรา</h2>
     <p class="lead">สั่งซื้อ ขอใบเสนอราคา หรือสอบถามการใช้งาน</p>
